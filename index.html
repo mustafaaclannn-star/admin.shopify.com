@@ -23,14 +23,14 @@
       --sidebar-width: 265px;
     }
 
-    /* ÜSTTE SABİT BAR */
+    /* ÜST SABİT BAR */
     .fixed-header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: var(--header-height);
-      z-index: 1000;
+      z-index: 3000;
       overflow: hidden;
       background: #111;
       line-height: 0;
@@ -41,36 +41,56 @@
       width: 100vw;
       height: auto;
       display: block;
-      object-fit: contain;
-      object-position: top center;
     }
 
-    /* SOL SABİT MENÜ */
+    /* SOL MENÜYÜ SABİT GÖSTEREN KATMAN */
     .fixed-sidebar {
       position: fixed;
       top: var(--header-height);
       left: 0;
       width: var(--sidebar-width);
       height: calc(100vh - var(--header-height));
-      z-index: 900;
+      z-index: 2500;
       overflow: hidden;
-      background: #f6f6f6;
+      background: #f5f5f5;
       border-right: 1px solid rgba(0,0,0,0.06);
     }
 
+    /*
+      Sidebar foto1.png içinden alınır.
+      Eğer sidebar aşağıdan/yukarıdan kayık görünürse
+      margin-top değerini değiştir.
+    */
     .fixed-sidebar img {
       width: 100vw;
       max-width: none;
       display: block;
-      transform: translateX(0);
+      margin-top: 0;
     }
 
-    /* ANA İÇERİK */
+    /*
+      Bu maske, kayan görsellerin sol tarafındaki sidebar'ı örter.
+      Böylece sadece fixed-sidebar görünür.
+    */
+    .sidebar-cover {
+      position: fixed;
+      top: var(--header-height);
+      left: 0;
+      width: var(--sidebar-width);
+      height: calc(100vh - var(--header-height));
+      z-index: 2400;
+      background: transparent;
+      pointer-events: none;
+    }
+
+    /* ANA KAYAN İÇERİK */
     .content {
       padding-top: var(--header-height);
       margin-left: var(--sidebar-width);
       width: calc(100vw - var(--sidebar-width));
       background: #f3f3f3;
+      position: relative;
+      z-index: 1;
     }
 
     .screen {
@@ -82,6 +102,10 @@
       background: #f3f3f3;
     }
 
+    /*
+      Görseli tam genişlikte tutup sola kaydırıyoruz.
+      Böylece görselin sidebar kısmı görünür alanın dışında kalıyor.
+    */
     .screen img {
       width: 100vw;
       max-width: none;
