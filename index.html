@@ -1,15 +1,108 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="tr">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.4">
-  <style type="text/css">
-    body {background-color: #ededed}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Homely Co · Analizler · Shopify</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #f3f3f3;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    /* ÜSTTE SABİT KALACAK GÖREV ÇUBUĞU */
+    .fixed-header {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 9999;
+      background: #111;
+      line-height: 0;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
+    }
+
+    .fixed-header img {
+      width: 100%;
+      display: block;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ANA İÇERİK */
+    .content {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      background: #f3f3f3;
+    }
+
+    .screen {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      line-height: 0;
+      background: #f3f3f3;
+    }
+
+    .screen img {
+      width: 100%;
+      display: block;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Görseller arasında çizgi/boşluk istemiyorsan böyle kalacak */
+    .screen + .screen {
+      margin-top: 0;
+    }
+
+    /* Mobilde de düzgün görünmesi için */
+    @media (max-width: 768px) {
+      .fixed-header img,
+      .screen img {
+        width: 100%;
+      }
+    }
   </style>
 </head>
+
 <body>
+
+  <!-- SABİT ÜST GÖREV ÇUBUĞU -->
+  <header class="fixed-header">
+    <img src="header.png" alt="Shopify üst görev çubuğu">
+  </header>
+
+  <!-- KAYDIRILAN İÇERİK -->
+  <main class="content">
+    <section class="screen">
+      <img src="foto1.png" alt="Analytics ekranı 1">
+    </section>
+
+    <section class="screen">
+      <img src="foto2.png" alt="Analytics ekranı 2">
+    </section>
+
+    <section class="screen">
+      <img src="foto3.png" alt="Analytics ekranı 3">
+    </section>
+
+    <section class="screen">
+      <img src="foto4.png" alt="Analytics ekranı 4">
+    </section>
+  </main>
+
 </body>
 </html>
