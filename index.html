@@ -17,11 +17,8 @@
     }
 
     :root {
-      /* header.png oranı 2048x206 olduğu için bu yükseklik tam ölçeklenir */
-      --header-height: 10.06vw;
-
-      /* Görsellerdeki sol menü genişliği. Gerekirse 16.2vw / 17vw deneyebilirsin. */
-      --sidebar-width: 16.7vw;
+      --header-height: 75px;
+      --sidebar-width: 265px;
     }
 
     .fixed-header {
@@ -39,7 +36,9 @@
 
     .fixed-header img {
       width: 100vw;
-      height: auto;
+      height: var(--header-height);
+      object-fit: cover;
+      object-position: top center;
       display: block;
     }
 
@@ -56,7 +55,6 @@
       line-height: 0;
     }
 
-    /* Sidebar ayrı dosya değildir, foto1.png içinden alınır */
     .fixed-sidebar img {
       width: 100vw;
       max-width: none;
@@ -83,7 +81,6 @@
       background: #f3f3f3;
     }
 
-    /* Kayan görsellerdeki sidebar kısmını görünür alanın dışına iter */
     .screen img {
       width: 100vw;
       max-width: none;
@@ -93,9 +90,12 @@
       padding: 0;
     }
 
-    .screen + .screen { margin-top: -2px; }
+    .screen + .screen {
+      margin-top: -2px;
+    }
   </style>
 </head>
+
 <body>
   <header class="fixed-header">
     <img src="header.png" alt="Shopify üst görev çubuğu" />
