@@ -19,15 +19,11 @@
     }
 
     :root {
-      /*
-        Bunlar ayar düğmeleri.
-        Oturmazsa sadece bu ikisini değiştirmen yeterli.
-      */
-      --header-height: 145px;
-      --sidebar-width: 255px;
+      --header-height: 185px;
+      --sidebar-width: 265px;
     }
 
-    /* ÜSTTE SABİT GÖREV ÇUBUĞU */
+    /* ÜSTTE SABİT BAR */
     .fixed-header {
       position: fixed;
       top: 0;
@@ -37,17 +33,19 @@
       z-index: 1000;
       overflow: hidden;
       background: #111;
+      line-height: 0;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.18);
     }
 
     .fixed-header img {
       width: 100vw;
-      height: var(--header-height);
-      object-fit: cover;
-      object-position: top center;
+      height: auto;
       display: block;
+      object-fit: contain;
+      object-position: top center;
     }
 
-    /* SOLDA SABİT MENÜ */
+    /* SOL SABİT MENÜ */
     .fixed-sidebar {
       position: fixed;
       top: var(--header-height);
@@ -56,14 +54,10 @@
       height: calc(100vh - var(--header-height));
       z-index: 900;
       overflow: hidden;
-      background: #f5f5f5;
+      background: #f6f6f6;
       border-right: 1px solid rgba(0,0,0,0.06);
     }
 
-    /*
-      Sidebar fotoğrafı ayrıca yok.
-      foto1.png içinden sol kısmı kullanıyoruz.
-    */
     .fixed-sidebar img {
       width: 100vw;
       max-width: none;
@@ -71,7 +65,7 @@
       transform: translateX(0);
     }
 
-    /* ANA KAYAN ALAN */
+    /* ANA İÇERİK */
     .content {
       padding-top: var(--header-height);
       margin-left: var(--sidebar-width);
@@ -88,10 +82,6 @@
       background: #f3f3f3;
     }
 
-    /*
-      Görsellerin içindeki sol menüyü gizliyoruz.
-      Görsel sola kayıyor, sadece ana içerik kısmı görünüyor.
-    */
     .screen img {
       width: 100vw;
       max-width: none;
@@ -101,10 +91,6 @@
       padding: 0;
     }
 
-    /*
-      Sayfa geçişlerini yumuşatır.
-      Arada çizgi/boşluk kalırsa -2px veya -3px yap.
-    */
     .screen + .screen {
       margin-top: -2px;
     }
@@ -113,17 +99,14 @@
 
 <body>
 
-  <!-- SABİT ÜST BAR -->
   <header class="fixed-header">
     <img src="header.png" alt="Shopify üst bar">
   </header>
 
-  <!-- SABİT SOL MENÜ: foto1.png içinden alınır -->
   <aside class="fixed-sidebar">
     <img src="foto1.png" alt="Shopify sol menü">
   </aside>
 
-  <!-- KAYAN İÇERİK -->
   <main class="content">
     <section class="screen">
       <img src="foto1.png" alt="Analytics 1">
