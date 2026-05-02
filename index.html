@@ -15,64 +15,99 @@
       padding: 0;
       background: #f3f3f3;
       font-family: Arial, Helvetica, sans-serif;
-    }
-
-    body {
       overflow-x: hidden;
     }
 
-    /* ÜSTTE SABİT KALACAK GÖREV ÇUBUĞU */
+    /*
+      Ayar alanı:
+      Eğer kayma tam oturmazsa sadece bu 2 değeri değiştir.
+    */
+    :root {
+      --header-height: 143px;
+      --sidebar-width: 250px;
+    }
+
+    /* ÜST GÖREV ÇUBUĞU */
     .fixed-header {
-      position: sticky;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       z-index: 9999;
       background: #111;
       line-height: 0;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.22);
     }
 
     .fixed-header img {
       width: 100%;
       display: block;
-      margin: 0;
-      padding: 0;
     }
 
-    /* ANA İÇERİK */
-    .content {
-      width: 100%;
-      margin: 0;
-      padding: 0;
+    /* SABİT SOL MENÜ */
+    .fixed-sidebar {
+      position: fixed;
+      top: var(--header-height);
+      left: 0;
+      width: var(--sidebar-width);
+      height: calc(100vh - var(--header-height));
+      z-index: 9998;
+      overflow: hidden;
+      background: #f3f3f3;
+      border-right: 1px solid rgba(0,0,0,0.06);
+    }
+
+    /*
+      Sol menüyü foto1.png içinden alıyoruz.
+      Yani ayrıca sidebar görseli oluşturmaya gerek yok.
+    */
+    .fixed-sidebar img {
+      width: 100vw;
+      max-width: none;
+      display: block;
+    }
+
+    /* İÇERİK ALANI */
+    .page {
+      padding-top: var(--header-height);
+      margin-left: var(--sidebar-width);
+      width: calc(100vw - var(--sidebar-width));
       background: #f3f3f3;
     }
 
+    /*
+      Her görselin sol menü kısmını kırpıyoruz.
+      Görsel tam ekran genişliğinde kalıyor ama görünür alan sol menüden sonra başlıyor.
+    */
     .screen {
-      width: 100%;
+      width: calc(100vw - var(--sidebar-width));
+      overflow: hidden;
+      line-height: 0;
       margin: 0;
       padding: 0;
-      line-height: 0;
       background: #f3f3f3;
     }
 
     .screen img {
-      width: 100%;
+      width: 100vw;
+      max-width: none;
       display: block;
+      transform: translateX(calc(-1 * var(--sidebar-width)));
       margin: 0;
       padding: 0;
     }
 
-    /* Görseller arasında çizgi/boşluk istemiyorsan böyle kalacak */
+    /*
+      Görseller arasında ince çizgi/boşluk kalırsa bunu azaltır.
+    */
     .screen + .screen {
-      margin-top: 0;
+      margin-top: -1px;
     }
 
-    /* Mobilde de düzgün görünmesi için */
-    @media (max-width: 768px) {
-      .fixed-header img,
-      .screen img {
-        width: 100%;
+    @media (max-width: 900px) {
+      :root {
+        --header-height: 115px;
+        --sidebar-width: 210px;
       }
     }
   </style>
@@ -80,13 +115,18 @@
 
 <body>
 
-  <!-- SABİT ÜST GÖREV ÇUBUĞU -->
+  <!-- Üstte sabit kalan görev çubuğu -->
   <header class="fixed-header">
     <img src="header.png" alt="Shopify üst görev çubuğu">
   </header>
 
-  <!-- KAYDIRILAN İÇERİK -->
-  <main class="content">
+  <!-- Solda sabit kalan menü -->
+  <aside class="fixed-sidebar">
+    <img src="foto1.png" alt="Shopify sol menü">
+  </aside>
+
+  <!-- Kaydırılan içerik -->
+  <main class="page">
     <section class="screen">
       <img src="foto1.png" alt="Analytics ekranı 1">
     </section>
